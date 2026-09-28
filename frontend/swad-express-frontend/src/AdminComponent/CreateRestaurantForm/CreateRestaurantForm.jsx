@@ -170,7 +170,7 @@ const CreateRestaurantForm = ({ onRestaurantCreated }) => {
         await dispatch(createRestaurant({ data: restaurantData, jwt }));
         notify("Restaurant created successfully.", "success");
         onRestaurantCreated?.();
-        navigate("/admin/restaurant/details")
+        navigate("/admin/restaurant/")
       } catch (error) {
         notify(
           error.response?.data?.message ||
