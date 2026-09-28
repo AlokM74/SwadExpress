@@ -51,6 +51,7 @@ public class AppConfig {
                         .anyRequest()
                         .permitAll()
                 )
+
                 .exceptionHandling(exceptions -> exceptions
                         .authenticationEntryPoint((request, response, exception) ->
                                 ApiErrorWriter.write(
@@ -93,6 +94,10 @@ public class AppConfig {
 
                 corsConfiguration.addAllowedOrigin(
                         "http://localhost:5173"
+                );
+
+                corsConfiguration.addAllowedOrigin(
+                        "https://swadexpress-in.vercel.app"
                 );
 
                 corsConfiguration.addAllowedOrigin(
