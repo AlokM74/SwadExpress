@@ -35,7 +35,6 @@ public class AppConfig {
 
                 .authorizeHttpRequests(authorize -> authorize
 
-                        // Authentication APIs
                         .requestMatchers("/auth/login").permitAll()
                         .requestMatchers("/auth/signup").permitAll()
                         .requestMatchers("/auth/verify-registration").permitAll()
@@ -43,15 +42,12 @@ public class AppConfig {
                         .requestMatchers("/auth/reset-password").permitAll()
                         .requestMatchers("/api/food/search").permitAll()
 
-                        // Admin APIs
                         .requestMatchers("/api/admin/**")
                         .hasAnyRole("RESTAURANT_OWNER", "ADMIN")
 
-                        // Other APIs
                         .requestMatchers("/api/**")
                         .authenticated()
 
-                        // Everything else
                         .anyRequest()
                         .permitAll()
                 )
@@ -97,6 +93,10 @@ public class AppConfig {
 
                 corsConfiguration.addAllowedOrigin(
                         "http://localhost:5173"
+                );
+
+                corsConfiguration.addAllowedOrigin(
+                        "https://swadexpress-rho.vercel.app"
                 );
 
                 corsConfiguration.setAllowedMethods(
