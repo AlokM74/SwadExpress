@@ -6,6 +6,7 @@ import "./Navbar.css";
 import { useLocation, useNavigate, useSearchParams } from "react-router-dom";
 import { useEffect, useRef, useState } from "react";
 import { useSelector } from "react-redux";
+import logo2 from "../../assets/logo2.png";
 
 const Navbar = () => {
   const navigate = useNavigate();
@@ -64,7 +65,7 @@ const Navbar = () => {
         }}
       >
         <img
-          src="/src/assets/logo2.png"
+          src={logo2}
           alt="Swad Express"
           className="sm:w-12 h-12 lg:w-14 lg:h-14 object-contain"
         />
