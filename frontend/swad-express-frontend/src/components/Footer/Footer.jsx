@@ -4,6 +4,7 @@ import GitHubIcon from "@mui/icons-material/GitHub";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import { useNavigate } from "react-router-dom";
+import logo2 from "../../assets/logo2.png";
 
 const supportLinks = [
   { label: "Help Center", href: "/my-profile/support" },
@@ -73,7 +74,7 @@ const Footer = () => {
               aria-label="Swad Express home"
             >
               <img
-                src="/src/assets/logo2.png"
+                src={logo2}
                 alt=""
                 className="h-12 w-12 object-contain sm:h-14 sm:w-14"
               />
