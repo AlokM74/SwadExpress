@@ -30,14 +30,12 @@ export const registerUser = (reqData) => async (dispatch) => {
       emailVerified: false,
     });
     dispatch({ type: REGISTER_OTP_SENT });
-    console.log("register success", data);
     return true;
   } catch (error) {
     dispatch({
       type: REGISTER_FAILURE,
       payload: error.response?.data?.message || error.response?.data || "Account creation failed",
     });
-    console.log("error", error);
     return false;
   }
 };
@@ -86,7 +84,6 @@ export const loginUser = (reqData) => async (dispatch) => {
         ? "/admin/restaurant"
         : "/",
     );
-    console.log("login success", data);
   } catch (error) {
     const responseMessage = String(
       error.response?.data?.message || error.response?.data || "",
@@ -101,7 +98,6 @@ export const loginUser = (reqData) => async (dispatch) => {
       type: LOGIN_FAILURE,
       payload: message,
     });
-    console.log("error", error);
   }
 };
 
@@ -115,10 +111,8 @@ export const getUser = (jwt) => async (dispatch) => {
       },
     });
     dispatch({ type: GET_USER_SUCCESS, payload: data });
-    console.log("user profile", data);
   } catch (error) {
     dispatch({ type: GET_USER_FAILURE, payload: error });
-    console.log("error", error);
   }
 };
 
@@ -143,15 +137,12 @@ export const addToFavorite =
         payload: data,
       });
 
-      console.log("add to favorite", data);
       dispatch(getUser(jwt));
     } catch (error) {
       dispatch({
         type: ADD_TO_FAVORITE_FAILURE,
         payload: error,
       });
-
-      console.log("error", error);
     }
   };
 export const logout = () => async (dispatch) => {
@@ -160,6 +151,5 @@ export const logout = () => async (dispatch) => {
     dispatch({ type: LOGOUT, payload: "logout success" });
     notify("Logout Successfully", "success");
   } catch (error) {
-    console.log("error", error);
   }
 };

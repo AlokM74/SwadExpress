@@ -11,10 +11,8 @@ export const updateOrderStatus= ({orderId,orderStatus,jwt})=>async (dispatch)=>{
             }
         })
         dispatch({type:UPDATE_ORDER_STATUS_SUCCESS,payload:response.data})
-        console.log("update status ",response.data);
         
     } catch (error) {
-     console.log(error);
      dispatch({type:UPDATE_ORDER_STATUS_FAILURE,payload:error})
         
     }
@@ -32,10 +30,8 @@ export const fetchRestaurantOrder= ({restaurantId,orderStatus,jwt})=>async (disp
             }
         })
         dispatch({type:GET_RESTAURANTS_ORDER_SUCCESS,payload:data})
-        console.log("restaurant orders :",data);
         
     } catch (error) {
-     console.log(error);
      dispatch({type:GET_RESTAURANTS_ORDER_FAILURE,payload:error})
         
     }

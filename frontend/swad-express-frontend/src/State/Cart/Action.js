@@ -10,10 +10,8 @@ export const findCart = (jwt) => async (dispatch) => {
                 Authorization:`Bearer ${jwt}`
             }
         })
-        console.log(" my cart",res.data);
         dispatch({type:FIND_CART_SUCCESS,payload:res.data})
     } catch (error) {
-        console.log(error);
         dispatch({type:FIND_CART_FAILURE,payload:error})
         
     }
@@ -27,10 +25,8 @@ export const getAllCartItems = (reqData) => async (dispatch) => {
                 Authorization:`Bearer ${reqData.jwt}`
             }
         })
-        console.log("all items ",res.data);
         dispatch({type:GET_ALL_CART_ITEM_SUCCESS,payload:res.data})
     } catch (error) {
-        console.log(error);
         dispatch({type:GET_ALL_CART_ITEM_FAILURE,payload:error})
     }
 }
@@ -43,11 +39,9 @@ export const addItemToCart = (reqData) => async (dispatch) => {
                 Authorization:`Bearer ${reqData.jwt}`
             }
         })
-        console.log("add item to cart",data);
         
         dispatch({type:ADD_ITEM_TO_CART_SUCCESS,payload:data})
     } catch (error) {
-        console.log(error);
         dispatch({type:ADD_ITEM_TO_CART_FAILURE,payload:error})
     }
 }
@@ -60,11 +54,9 @@ export const updateCartItem = (reqData) => async (dispatch) => {
                 Authorization:`Bearer ${reqData.jwt}`
             }
         })
-        console.log("add item to cart",data);
         
         dispatch({type:UPDATE_CART_ITEM_SUCCESS,payload:data})
     } catch (error) {
-        console.log(error);
         dispatch({type:UPDATE_CART_ITEM_FAILURE,payload:error.message})
     }
 }
@@ -77,11 +69,9 @@ export const removeCartItem = ({cartItemId,jwt}) => async (dispatch) => {
                 Authorization:`Bearer ${jwt}`
             }
         })
-        console.log("add item to cart",data);
         
         dispatch({type:REMOVE_CART_ITEM_SUCCESS,payload:data})
     } catch (error) {
-        console.log(error);
         dispatch({type:REMOVE_CART_ITEM_FAILURE,payload:error.message})
     }
 }
@@ -94,10 +84,8 @@ export const clearCartAction = () => async (dispatch) => {
                 Authorization:`Bearer ${localStorage.getItem("jwt")}`
             }
         })
-        console.log("add item to cart",data);
         dispatch({type:CLEAR_CART_SUCCESS,payload:data})
     } catch (error) {
-        console.log(error);
         dispatch({type:CLEAR_CART_FAILURE,payload:error.message})
     }
 }

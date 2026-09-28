@@ -27,7 +27,6 @@ export const createOrder = (reqData) => async (dispatch) => {
         Authorization: `Bearer ${reqData.jwt}`,
       },
     });
-    console.log("created order data ", data);
     dispatch({ type: CREATE_ORDER_SUCCESS, payload: data });
     await dispatch(clearCartAction());
     return data;
@@ -46,10 +45,8 @@ export const getUsersOrder = (jwt) => async (dispatch) => {
         Authorization: `Bearer ${jwt}`,
       },
     });
-    console.log("users order ", data);
     dispatch({ type: GET_USERS_ORDERS_SUCCESS, payload: data });
   } catch (error) {
-    console.log(error);
     dispatch({ type: GET_USERS_ORDERS_FAILURE, payload: error });
   }
 };

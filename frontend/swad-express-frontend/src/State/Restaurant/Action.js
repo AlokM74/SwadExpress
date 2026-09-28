@@ -59,10 +59,7 @@ export const getAllRestaurantsAction = (token) => async (dispatch) => {
       },
     });
     dispatch({ type: GET_ALL_RESTAURANT_SUCCESS, payload: data });
-    console.log("all restaurant ", data);
   } catch (error) {
-    console.log("error ", error);
-
     dispatch({ type: GET_ALL_RESTAURANT_FAILURE, payload: error });
   }
 };
@@ -81,11 +78,7 @@ export const getRestaurantById = (restaurantId, jwt) => async (dispatch) => {
       type: GET_RESTAURANT_BY_ID_SUCCESS,
       payload: data,
     });
-
-    console.log("restaurant:", data);
   } catch (error) {
-    console.log("error:", error);
-
     dispatch({
       type: GET_RESTAURANT_BY_ID_FAILURE,
       payload: error,

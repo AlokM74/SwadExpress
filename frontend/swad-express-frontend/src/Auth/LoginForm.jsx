@@ -65,7 +65,6 @@ const LoginForm = () => {
 
   const handleSubmit = (values) => {
     dispatch(loginUser({userData:values,navigate}))
-    console.log(values);
   };
 
   return (

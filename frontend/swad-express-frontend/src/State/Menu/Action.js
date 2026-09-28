@@ -32,11 +32,9 @@ export const createMenuItem =
           Authorization: `Bearer ${jwt}`,
         },
       });
-      console.log("menu created ", data);
       dispatch({ type: CREATE_MENU_ITEM_SUCCESS, payload: data });
       return data;
     } catch (error) {
-      console.log("error ", error);
       dispatch({ type: CREATE_MENU_ITEM_FAILURE, payload: error });
       throw error;
     }
@@ -72,14 +70,12 @@ export const getMenuItemsByRestaurantId = (reqData) => async (dispatch) => {
         })
       : data;
 
-    console.log("menu items by restaurants ", filteredData);
     dispatch({
       type: GET_MENU_ITEMS_BY_RESTAURANT_ID_SUCCESS,
       payload: filteredData,
     });
     return filteredData;
   } catch (error) {
-    console.log("error ", error);
     dispatch({ type: GET_MENU_ITEMS_BY_RESTAURANT_ID_FAILURE, payload: error });
     throw error;
   }
@@ -95,11 +91,9 @@ export const searchMenuItem =
           Authorization: `Bearer ${jwt}`,
         },
       });
-      console.log("data ", data);
       dispatch({ type: SEARCH_MENU_ITEM_SUCCESS, payload: data });
       return data;
     } catch (error) {
-      console.log("error ", error);
       dispatch({ type: SEARCH_MENU_ITEM_FAILURE, payload: error });
       throw error;
     }
@@ -119,11 +113,9 @@ export const updateMenuItemAvailability =
           },
         },
       );
-      console.log("menu items availlability ", data);
       dispatch({ type: UPDATE_MENU_ITEM_AVAILABILITY_SUCCESS, payload: data });
       return data;
     } catch (error) {
-      console.log("error ", error);
       dispatch({
         type: UPDATE_MENU_ITEM_AVAILABILITY_FAILURE,
         payload: error,
@@ -145,11 +137,9 @@ export const deleteFoodAction =
           },
         },
       );
-      console.log("Delete food successfully ", data);
       dispatch({ type: DELETE_MENU_ITEM_SUCCESS, payload: foodId });
       return data;
     } catch (error) {
-      console.log("error ", error);
       dispatch({ type: DELETE_MENU_ITEM_FAILURE, payload: error });
       throw error;
     }
