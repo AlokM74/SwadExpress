@@ -41,23 +41,45 @@ public class EmailServiceImpl implements EmailService {
 
         if (brevoApiKey == null || brevoApiKey.isBlank()) {
             log.error("Brevo API key is missing");
-            throw new MailSendException("Brevo API key is not configured");
+            throw new MailSendException(
+                    "Brevo API key is not configured"
+            );
         }
 
         if (senderEmail == null || senderEmail.isBlank()) {
             log.error("Brevo sender email is missing");
-            throw new MailSendException("Brevo sender email is not configured");
+            throw new MailSendException(
+                    "Brevo sender email is not configured"
+            );
         }
 
         if (to == null || to.isBlank()) {
             log.error("Recipient email is missing");
-            throw new MailSendException("Recipient email is required");
+            throw new MailSendException(
+                    "Recipient email is required"
+            );
+        }
+
+        if (subject == null || subject.isBlank()) {
+            log.error("Email subject is missing");
+            throw new MailSendException(
+                    "Email subject is required"
+            );
+        }
+
+        if (body == null || body.isBlank()) {
+            log.error("Email body is missing");
+            throw new MailSendException(
+                    "Email body is required"
+            );
         }
 
         log.info(
                 "Brevo API key loaded successfully. Key length: {}",
                 brevoApiKey.length()
         );
+
+        log.info("BREVO_EMAIL_SERVICE_V2_ACTIVE");
 
         log.info(
                 "Sending email from {} to {}",
@@ -66,8 +88,11 @@ public class EmailServiceImpl implements EmailService {
         );
 
         HttpHeaders headers = new HttpHeaders();
+
         headers.setContentType(MediaType.APPLICATION_JSON);
-        headers.setAccept(List.of(MediaType.APPLICATION_JSON));
+        headers.setAccept(
+                List.of(MediaType.APPLICATION_JSON)
+        );
         headers.set("api-key", brevoApiKey);
 
         Map<String, Object> sender = new HashMap<>();
