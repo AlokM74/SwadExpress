@@ -4,6 +4,7 @@ import {
   Typography,
   IconButton,
   InputAdornment,
+  CircularProgress,
 } from "@mui/material";
 
 import CloseIcon from "@mui/icons-material/Close";
@@ -64,7 +65,7 @@ const LoginForm = () => {
   const [showPassword, setShowPassword] = useState(false);
 
   const handleSubmit = (values) => {
-    dispatch(loginUser({userData:values,navigate}))
+    return dispatch(loginUser({userData:values,navigate}));
   };
 
   return (
@@ -139,6 +140,7 @@ const LoginForm = () => {
         onSubmit={handleSubmit}
         initialValues={initialValues}
       >
+        {({ isSubmitting }) => (
         <Form>
 
           
@@ -219,6 +221,7 @@ const LoginForm = () => {
             fullWidth
             type="submit"
             variant="contained"
+            disabled={isSubmitting}
             sx={{
               py: 1.25,
               borderRadius: "10px",
@@ -242,9 +245,17 @@ const LoginForm = () => {
               },
             }}
           >
-            Login
+            {isSubmitting ? (
+              <>
+                <CircularProgress size={20} sx={{ color: "#fff", mr: 1 }} />
+                Logging in...
+              </>
+            ) : (
+              "Login"
+            )}
           </Button>
         </Form>
+        )}
       </Formik>
 
       
